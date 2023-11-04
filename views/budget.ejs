@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="navbar bg-dark flex-md-nowrap p-3 shadow" data-bs-theme="dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand fs-6" href="#">REC Budget</a>
+            <div class="ms-auto" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="/login">Edit Budget</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+    </header>
+
+            <main class="col-md-9 m-sm-auto col-lg-10 px-md-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Dashboard</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group me-2" style="height:50px">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Year</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Month</button>
+                        </div>
+                    </div>
+                </div>
+
+                <canvas class="my-4 w-100" id="myChart" width="654" height="276"
+                    style="display: block; box-sizing: border-box; height: 220px; width: 523px;"></canvas>
+
+                <h2 class="mb-5">Budge Information</h2>
+
+                <div>
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Month</th>
+                          <th>Category</th>
+                          <th>Description</th>
+                          <th>Amount</th>
+                          <th>Card Used</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td rowspan="3">January</td>
+                          <td>Wants</td>
+                          <td>Themepark ride</td>
+                          <td>$100</td>
+                          <td>Credit Card 1</td>
+                        </tr>
+                        <tr>
+                          <td>Needs</td>
+                          <td>Water bill</td>
+                          <td>$50</td>
+                          <td>Debit Card</td>
+                        </tr>
+                        <tr>
+                          <td>Expenses</td>
+                          <td>Uber</td>
+                          <td>$30</td>
+                          <td>Credit Card 2</td>
+                        </tr>
+                        <!-- Add more rows for February, March, and so on -->
+                      </tbody>
+                    </table>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p>Amount Available: $2000</p>
+                      </div>
+                      <div class="col-md-6">
+                        <p>Total Amount Spent: $180</p>
+                      </div>
+                    </div>
+                  </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

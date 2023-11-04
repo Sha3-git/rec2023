@@ -16,3 +16,52 @@ Budget Edit page
 
 
 Budget data schema
+User should have a budget for each month 
+for each month the user will define their want, needs, and expenses
+--> take the total dollar amount 
+--> each should be an array of object data with the name of the want/need/expense, the dollar amount, the card used, month, year, 
+for each month the user will define their current balance which will include money from their credit card and money from their bank account
+--> show total monthly expenditure and the monthly savings
+--> user should be able to select which expenditure goes on which card
+for each year there will be a graph showing month versus expenditure 
+-->the amount they saved (yearly income total - yearly amount spent )
+
+
+{
+  _id: ObjectId, // MongoDB generated ID
+  userId: ObjectId, // Reference to the User document
+  year: Number, // Year (e.g., 2023)
+  months: [
+    {
+      month: Number, // Month (1-12)
+      wants: [
+        {
+          name: String, // Name of the want
+          amount: Number, // Dollar amount
+          cardUsed: ObjectId, // Reference to the Card document
+        }
+      ],
+      needs: [
+        {
+          name: String, // Name of the need
+          amount: Number, // Dollar amount
+          cardUsed: ObjectId, // Reference to the Card document
+        }
+      ],
+      expenses: [
+        {
+          name: String, // Name of the expense
+          amount: Number, // Dollar amount
+          cardUsed: ObjectId, // Reference to the Card document
+        }
+      ],
+      currentBalance: {
+        creditCardAmount: Number, // Money from the credit card
+        bankAccountAmount: Number, // Money from the bank account
+      },
+      // Other month-specific information
+    },
+    // Add more Month objects for other months in the year
+  ],
+  // Other year-specific information
+}
