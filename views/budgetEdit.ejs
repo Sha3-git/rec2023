@@ -26,8 +26,8 @@
           </nav>
     </header>
 
-            <main class="col-md-9 m-sm-auto col-lg-10 px-md-4">
-                <h2>Enter Budget Details</h2>
+            <main class="col-md-9 m-sm-auto col-lg-10 px-md-4 w-50">
+                <h2 class="mb-5 mt-5">Enter Budget Details</h2>
     
                 <!-- Want Form -->
                 <form action="/want" method="post">
@@ -35,6 +35,7 @@
                   <div class="form-group">
                     <label for="wantName">Name:</label>
                     <input type="text" class="form-control" id="wantName" name="wantName" required>
+                    <input type="text" class="form-control" id="userId" name="userId" value="<%=user_id%>" hidden>
                   </div>
                   <div class="form-group">
                     <label for="wantAmount">Amount Spent:</label>
@@ -57,6 +58,7 @@
                   <div class="form-group">
                     <label for="needName">Name:</label>
                     <input type="text" class="form-control" id="needName" name="needName" required>
+                    <input type="text" class="form-control" id="userId" name="userId" value="<%=user_id%>" hidden>
                   </div>
                   <div class="form-group">
                     <label for="needAmount">Amount Spent:</label>
@@ -79,6 +81,7 @@
                   <div class="form-group">
                     <label for="expenseName">Name:</label>
                     <input type="text" class="form-control" id="expenseName" name="expenseName" required>
+                    <input type="text" class="form-control" id="userId" name="userId" value="<%=user_id%>" hidden>
                   </div>
                   <div class="form-group">
                     <label for="expenseAmount">Amount Spent:</label>

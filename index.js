@@ -9,6 +9,8 @@ const app = express();
 
 
 const User = require('./models/user.js');
+const Budget = require('./models/budget.js')
+var user_id;
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
@@ -89,6 +91,7 @@ app.post('/signupauth', async (req, res) => {
   
       if (user) {
         // Redirect to the '/budget' page upon successful login
+        user_id = user._id.toString();
         res.redirect('/Budget');
       } else {
         // Redirect to a login error page or the login page with an error message
@@ -100,8 +103,44 @@ app.post('/signupauth', async (req, res) => {
     }
   });
 app.get('/Budget', (req, res)=>{
-    res.render("budget")
+    res.render("budget", {user_id: user_id})
 })
 app.get('/Edit', (req, res)=>{
-    res.render("budgetEdit")
+    console.log(user_id)
+    res.render("budgetEdit", {user_id: user_id})
 });
+
+
+app.post('/want', (req, res)=>{
+    const newWant = {
+        name: req.body.wantName,
+        amount: req.body.wantAmount,
+        card: req.body.wantCard,
+        month: req.body.wantMonth
+    };
+    insertNewWant(user_id, newWant)
+    res.render("budgetEdit", {user_id: user_id})
+    console.log(user_id)
+} )
+
+async function insertNewWant(user_id, wantData) {
+    try {
+        // Check if a budget with the user_id exists
+        let budget = await Budget.findOne({ user_id });
+
+        if (!budget) {
+            // If a budget does not exist, create a new budget object
+            budget = new Budget({ user_id, want: [] });
+        }
+
+        // Push the new "want" object into the "want" array
+        budget.want.push(wantData);
+
+        // Save the budget document
+        await budget.save();
+        console.log("New want inserted successfully.");
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
