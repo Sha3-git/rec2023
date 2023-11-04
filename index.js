@@ -102,3 +102,6 @@ app.post('/signupauth', async (req, res) => {
 app.get('/Budget', (req, res)=>{
     res.render("budget")
 })
+app.get('/Edit', (req, res)=>{
+    res.render("budgetEdit")
+});

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="navbar bg-dark flex-md-nowrap p-3 shadow" data-bs-theme="dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand fs-6" href="#">REC Budget</a>
+            <div class="ms-auto" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="/login">Edit Budget</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+    </header>
+
+            <main class="col-md-9 m-sm-auto col-lg-10 px-md-4">
+                <h2>Enter Budget Details</h2>
+    
+                <!-- Want Form -->
+                <form action="/want" method="post">
+                  <h3>Want</h3>
+                  <div class="form-group">
+                    <label for="wantName">Name:</label>
+                    <input type="text" class="form-control" id="wantName" name="wantName" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="wantAmount">Amount Spent:</label>
+                    <input type="number" class="form-control" id="wantAmount" name="wantAmount" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="wantCard">Card Used:</label>
+                    <input type="text" class="form-control" id="wantCard" name="wantCard" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="wantMonth">Month:</label>
+                    <input type="text" class="form-control" id="wantMonth" name="wantMonth" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit Want</button>
+                </form>
+            
+                <!-- Need Form -->
+                <form action="/need" method="post">
+                  <h3>Need</h3>
+                  <div class="form-group">
+                    <label for="needName">Name:</label>
+                    <input type="text" class="form-control" id="needName" name="needName" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="needAmount">Amount Spent:</label>
+                    <input type="number" class="form-control" id="needAmount" name="needAmount" required>
+                  </div>
+                  <div class form-group>
+                    <label for="needCard">Card Used:</label>
+                    <input type="text" class="form-control" id="needCard" name="needCard" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="needMonth">Month:</label>
+                    <input type="text" class="form-control" id="needMonth" name="needMonth" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit Need</button>
+                </form>
+            
+                <!-- Expense Form -->
+                <form action="/expense" method="post">
+                  <h3>Expense</h3>
+                  <div class="form-group">
+                    <label for="expenseName">Name:</label>
+                    <input type="text" class="form-control" id="expenseName" name="expenseName" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="expenseAmount">Amount Spent:</label>
+                    <input type="number" class="form-control" id="expenseAmount" name="expenseAmount" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="expenseCard">Card Used:</label>
+                    <input type="text" class="form-control" id="expenseCard" name="expenseCard" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="expenseMonth">Month:</label>
+                    <input type="text" class="form-control" id="expenseMonth" name="expenseMonth" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit Expense</button>
+                </form>
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

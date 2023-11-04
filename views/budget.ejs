@@ -16,7 +16,7 @@
             <div class="ms-auto" id="navbarNav">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="/login">Edit Budget</a>
+                  <a class="nav-link" href="/Edit">Edit Budget</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/">Logout</a>
@@ -37,17 +37,34 @@
                         </div>
                     </div>
                 </div>
+                <h4 class="mt-5 mb-5">Categorized Expenditures</h4>
                 <div class="w-50 h-50 mb-5 container">
                     <canvas id="budgetPieChart" width="150" height="150"></canvas>
 
                 </div>
                 <h2 class="mb-5">Card Information</h2>
                 <div>
-                    Debit: 1000k
+                    <div class="row mb-5">
+                        <div class="col-md-6">
+                          <div class="card" style="width: 18rem;">
+                            <div class="card-body p-3">
+                              <h5 class="card-title">Credit Card</h5>
+                              <p class="card-text">Amount: $1000</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="card" style="width: 18rem;">
+                            <div class="card-body p-3">
+                              <h5 class="card-title">Debit Card</h5>
+                              <p class="card-text">Amount: $500</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                 </div>
-                
-                <h2 class="mb-5">Budget Information</h2>
 
+                <h2 class="mb-5">Budget Information</h2>
                 <div>
                     <table class="table table-bordered">
                       <thead>
