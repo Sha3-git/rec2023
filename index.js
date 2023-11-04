@@ -132,6 +132,36 @@ app.post('/signupauth', async (req, res) => {
     }
   });
   
+  app.get('/Year', async (req, res) => {
+    try {
+      // Find the user's budget based on the user_id
+      const userBudget = await Budget.findOne({ user_id });
+  
+      if (userBudget) {
+        // Calculate the sums of "Wants," "Needs," and "Expenses"
+        const sumWants = calculateCategorySum(userBudget.want);
+        const sumNeeds = calculateCategorySum(userBudget.need);
+        const sumExpenses = calculateCategorySum(userBudget.expense);
+
+
+        // Render the "budget" view with the data, including the sums
+        res.render("year", {
+          user_id: user_id,
+          budgetData: userBudget,
+          sumWants: sumWants,
+          sumNeeds: sumNeeds,
+          sumExpenses: sumExpenses,
+        });
+      } else {
+        // Handle the case where the user's budget does not exist
+        res.render("year", { user_id: user_id, budgetData: null });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).send("Internal Server Error");
+    }
+  });
+  
   // Function to calculate the sum of amounts within a category
   function calculateCategorySum(category) {
     return category.reduce((acc, item) => acc + item.amount, 0);
