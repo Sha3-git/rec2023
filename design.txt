@@ -1,0 +1,18 @@
+Main page 
+* this will have a link to the login page
+
+Sign up page
+
+
+Login page
+
+
+
+Budget page
+*Includes graph visualizer for the budget and their goals
+
+Budget Edit page
+
+
+
+Budget data schema
