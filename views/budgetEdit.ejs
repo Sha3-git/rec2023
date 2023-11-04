@@ -49,6 +49,10 @@
                     <label for="wantMonth">Month:</label>
                     <input type="text" class="form-control" id="wantMonth" name="wantMonth" required>
                   </div>
+                  <div class="form-group">
+                    <label for="wantMonth">Year:</label>
+                    <input type="text" class="form-control" id="wantYear" name="wantYear" required>
+                  </div>
                   <button type="submit" class="btn btn-primary mt-2 mb-5">Submit Want</button>
                 </form>
             
@@ -71,6 +75,10 @@
                   <div class="form-group">
                     <label for="needMonth">Month:</label>
                     <input type="text" class="form-control" id="needMonth" name="needMonth" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="wantMonth">Year:</label>
+                    <input type="text" class="form-control" id="needYear" name="needYear" required>
                   </div>
                   <button type="submit" class="btn btn-primary mt-2 mb-5">Submit Need</button>
                 </form>
@@ -95,8 +103,42 @@
                     <label for="expenseMonth">Month:</label>
                     <input type="text" class="form-control" id="expenseMonth" name="expenseMonth" required>
                   </div>
+                  <div class="form-group">
+                    <label for="wantMonth">Year:</label>
+                    <input type="text" class="form-control" id="expenseYear" name="expenseYear" required>
+                  </div>
                   <button type="submit" class="btn btn-primary mt-2 mb-5">Submit Expense</button>
                 </form>
+
+                <h2 class="mb-5 mt-5">Enter Budget Details</h2>
+                
+                <form action="/add-card-balance" method="post" class="mb-5">
+                    <div class="mb-3">
+                      <label for="cardType" class="form-label">Card Type:</label>
+                      <select class="form-select" id="cardType" name="cardType" required>
+                        <option value="credit">Credit Card</option>
+                        <option value="debit">Debit Card</option>
+                      </select>
+                    </div>
+                  
+                    <div class="mb-3">
+                      <label for="balance" class="form-label">Card Balance:</label>
+                      <input type="number" class="form-control" id="balance" name="balance" placeholder="Enter Balance" required>
+                    </div>
+                  
+                    <div class="mb-3">
+                      <label for="month" class="form-label">Month:</label>
+                      <input type="text" class="form-control" id="month" name="month" placeholder="Enter Month (e.g., January)" required>
+                    </div>
+                  
+                    <div class="mb-3">
+                      <label for="year" class="form-label">Year:</label>
+                      <input type="number" class="form-control" id="year" name="year" placeholder="Enter Year" required>
+                    </div>
+                  
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                  
             </main>
         </div>
     </div>
