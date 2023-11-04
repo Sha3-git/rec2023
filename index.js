@@ -10,7 +10,7 @@ const app = express();
 
 const User = require('./models/user.js');
 app.set('view engine', 'ejs');
-app.set('views', __dirname + './views');
+app.set('views', __dirname + '/views');
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true}));
