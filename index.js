@@ -123,8 +123,9 @@ app.post('/signupauth', async (req, res) => {
           sumExpenses: sumExpenses,
         });
       } else {
-        // Handle the case where the user's budget does not exist
-        res.render("budget", { user_id: user_id, budgetData: null });
+        const newBudget = new Budget({ user_id, want: [], need: [], expense: [] });
+        await newBudget.save();
+          res.render("year", { user_id: user_id, budgetData: newBudget });
       }
     } catch (error) {
       console.error("Error:", error);
@@ -154,7 +155,9 @@ app.post('/signupauth', async (req, res) => {
         });
       } else {
         // Handle the case where the user's budget does not exist
-        res.render("year", { user_id: user_id, budgetData: null });
+        const newBudget = new Budget({ user_id, want: [], need: [], expense: [] });
+      await newBudget.save();
+        res.render("year", { user_id: user_id, budgetData: newBudget });
       }
     } catch (error) {
       console.error("Error:", error);
