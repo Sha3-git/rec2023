@@ -111,7 +111,7 @@
                 </form>
 
                 <h2 class="mb-5 mt-5">Enter Budget Details</h2>
-                
+
                 <form action="/add-card-balance" method="post" class="mb-5">
                     <div class="mb-3">
                       <label for="cardType" class="form-label">Card Type:</label>
@@ -119,6 +119,7 @@
                         <option value="credit">Credit Card</option>
                         <option value="debit">Debit Card</option>
                       </select>
+                      <input type="text" class="form-control" id="userId" name="userId" value="<%=user_id%>" hidden>
                     </div>
                   
                     <div class="mb-3">
