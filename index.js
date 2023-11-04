@@ -10,6 +10,7 @@ const app = express();
 
 const User = require('./models/user.js');
 app.set('view engine', 'ejs');
+app.set('views', __dirname +'/ejs')
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true}));
@@ -88,7 +89,7 @@ app.post('/signupauth', async (req, res) => {
   
       if (user) {
         // Redirect to the '/budget' page upon successful login
-        res.redirect('/budget');
+        res.redirect('/Budget');
       } else {
         // Redirect to a login error page or the login page with an error message
         res.redirect('/login');
