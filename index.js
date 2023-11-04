@@ -102,9 +102,41 @@ app.post('/signupauth', async (req, res) => {
       res.status(500).send("Internal Server Error");
     }
   });
-app.get('/Budget', (req, res)=>{
-    res.render("budget", {user_id: user_id})
-})
+  app.get('/Budget', async (req, res) => {
+    try {
+      // Find the user's budget based on the user_id
+      const userBudget = await Budget.findOne({ user_id });
+  
+      if (userBudget) {
+        // Calculate the sums of "Wants," "Needs," and "Expenses"
+        const sumWants = calculateCategorySum(userBudget.want);
+        const sumNeeds = calculateCategorySum(userBudget.need);
+        const sumExpenses = calculateCategorySum(userBudget.expense);
+
+
+        // Render the "budget" view with the data, including the sums
+        res.render("budget", {
+          user_id: user_id,
+          budgetData: userBudget,
+          sumWants: sumWants,
+          sumNeeds: sumNeeds,
+          sumExpenses: sumExpenses,
+        });
+      } else {
+        // Handle the case where the user's budget does not exist
+        res.render("budget", { user_id: user_id, budgetData: null });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      res.status(500).send("Internal Server Error");
+    }
+  });
+  
+  // Function to calculate the sum of amounts within a category
+  function calculateCategorySum(category) {
+    return category.reduce((acc, item) => acc + item.amount, 0);
+  }
+  
 app.get('/Edit', (req, res)=>{
     console.log(user_id)
     res.render("budgetEdit", {user_id: user_id})
@@ -130,7 +162,7 @@ async function insertNewWant(user_id, wantData) {
 
         if (!budget) {
             // If a budget does not exist, create a new budget object
-            budget = new Budget({ user_id, want: [] });
+            budget = new Budget({ user_id, want: [], expense:[], need:[] });
         }
 
         // Push the new "want" object into the "want" array
@@ -144,3 +176,71 @@ async function insertNewWant(user_id, wantData) {
     }
 }
 
+// Route for adding a new "need"
+app.post('/need', (req, res) => {
+    const newNeed = {
+      name: req.body.needName,
+      amount: req.body.needAmount,
+      card: req.body.needCard,
+      month: req.body.needMonth
+    };
+    insertNewNeed(user_id, newNeed);
+    res.render("budgetEdit", { user_id: user_id });
+    console.log(user_id);
+  });
+  
+  // Route for adding a new "expense"
+  app.post('/expense', (req, res) => {
+    const newExpense = {
+      name: req.body.expenseName,
+      amount: req.body.expenseAmount,
+      card: req.body.expenseCard,
+      month: req.body.expenseMonth
+    };
+    insertNewExpense(user_id, newExpense);
+    res.render("budgetEdit", { user_id: user_id });
+    console.log(user_id);
+  });
+  
+  async function insertNewNeed(user_id, needData) {
+    try {
+      // Check if a budget with the user_id exists
+      let budget = await Budget.findOne({ user_id });
+  
+      if (!budget) {
+        // If a budget does not exist, create a new budget object
+        budget = new Budget({ user_id, want: [], need: [], expense:[] });
+      }
+  
+      // Push the new "need" object into the "need" array
+      budget.need.push(needData);
+  
+      // Save the budget document
+      await budget.save();
+      console.log("New need inserted successfully.");
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
+  
+  async function insertNewExpense(user_id, expenseData) {
+    try {
+      // Check if a budget with the user_id exists
+      let budget = await Budget.findOne({ user_id });
+  
+      if (!budget) {
+        // If a budget does not exist, create a new budget object
+        budget = new Budget({ user_id, want: [], need: [], expense: [] });
+      }
+  
+      // Push the new "expense" object into the "expense" array
+      budget.expense.push(expenseData);
+  
+      // Save the budget document
+      await budget.save();
+      console.log("New expense inserted successfully.");
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
+  

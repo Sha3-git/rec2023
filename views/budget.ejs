@@ -77,37 +77,47 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td rowspan="3">January</td>
-                          <td>Wants</td>
-                          <td>Themepark ride</td>
-                          <td>$100</td>
-                          <td>Credit Card 1</td>
-                        </tr>
-                        <tr>
-                          <td>Needs</td>
-                          <td>Water bill</td>
-                          <td>$50</td>
-                          <td>Debit Card</td>
-                        </tr>
-                        <tr>
-                          <td>Expenses</td>
-                          <td>Uber</td>
-                          <td>$30</td>
-                          <td>Credit Card 2</td>
-                        </tr>
-                        <!-- Add more rows for February, March, and so on -->
+                        <% budgetData.want.forEach((item) => { %>
+                          <tr>
+                            <td><%= item.month %></td>
+                            <td>Wants</td>
+                            <td><%= item.name %></td>
+                            <td>$<%= item.amount %></td>
+                            <td><%= item.card %></td>
+                          </tr>
+                        <% }); %>
+                  
+                        <% budgetData.need.forEach((item) => { %>
+                          <tr>
+                            <td><%= item.month %></td>
+                            <td>Needs</td>
+                            <td><%= item.name %></td>
+                            <td>$<%= item.amount %></td>
+                            <td><%= item.card %></td>
+                          </tr>
+                        <% }); %>
+                  
+                        <% budgetData.expense.forEach((item) => { %>
+                          <tr>
+                            <td><%= item.month %></td>
+                            <td>Expenses</td>
+                            <td><%= item.name %></td>
+                            <td>$<%= item.amount %></td>
+                            <td><%= item.card %></td>
+                          </tr>
+                        <% }); %>
                       </tbody>
                     </table>
                     <div class="row">
                       <div class="col-md-6">
-                        <p>Amount Available: $2000</p>
+                        <p>Amount Available: $<%= budgetData.amountAvailable %></p>
                       </div>
                       <div class="col-md-6">
-                        <p>Total Amount Spent: $180</p>
+                        <p>Total Amount Spent: $<%= budgetData.totalAmountSpent %></p>
                       </div>
                     </div>
                   </div>
+                  
             </main>
         </div>
     </div>
@@ -119,7 +129,7 @@
             // Sample data (fictional monthly budget)
             const data = {
               labels: ["Wants", "Needs", "Expenses"],
-              values: [400, 600, 300], // Sample expenditure values
+              values: [<%=sumWants%>, <%=sumNeeds%>, <%=sumExpenses%>], // Sample expenditure values
             };
           
             const ctx = document.getElementById("budgetPieChart").getContext("2d");
